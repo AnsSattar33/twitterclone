@@ -38,6 +38,10 @@ app.use("/api/v1/user", userRoute)
 
 app.use("/api/v1/tweet", tweetRoute)
 
+app.get("/", (req, res) => {
+    res.send("Twitter Clone Backend is running!");
+});
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Server listning to ${process.env.PORT}`)
