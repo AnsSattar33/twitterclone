@@ -10,11 +10,21 @@ databaseConnection();
 
 dotenv.config({ path: ".env" })
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://twitterclone-frontend-five.vercel.app"
+];
+
 const corsOptions = {
-    origin: 'http://localhost:5173',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200
-}
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+};
 //Middleware
 
 app.use(express.urlencoded({ extended: true }))
