@@ -28,7 +28,7 @@ app.use(cookieParser())
 app.use(cors(corsOptions));
 //api
 
-app.get("/", (req, res) => {
+app.get("*", (_, res) => {
     res.send("Twitter Clone Backend is running!");
 });
 
