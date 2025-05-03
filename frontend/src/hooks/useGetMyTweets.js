@@ -7,10 +7,14 @@ const useGetMyTweet = async (id) => {
     const { refresh, isActive } = useSelector(state => state.tweet)
     const dispatch = useDispatch();
 
+    const API_BASE_URL = import.meta.env.PROD
+        ? "https://twitterclone-backend-beta.vercel.app"
+        : TWEET_API_END_POINT;
+
     const fetchMyTweets = async () => {
         try {
 
-            const res = await axios.get(`${TWEET_API_END_POINT}/tweets/${id}`, { withCredentials: true });
+            const res = await axios.get(`${API_BASE_URL}/tweets/${id}`, { withCredentials: true });
             dispatch(getTweets(res.data.allTweets))
         } catch (error) {
             console.log("error in useGetMyTweet = ", error)

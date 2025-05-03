@@ -6,12 +6,16 @@ import { getOtherUser } from "../redux/userSlice"
 
 const useGetOtherUser = async (id) => {
 
+    const API_BASE_URL = import.meta.env.PROD
+        ? "https://twitterclone-backend-beta.vercel.app"
+        : USER_API_END_POINT;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchMyProfile = async () => {
             try {
-                const res = await axios.get(`${USER_API_END_POINT}/otheruser/${id}`, { withCredentials: true });
+                const res = await axios.get(`${API_BASE_URL}/otheruser/${id}`, { withCredentials: true });
                 dispatch(getOtherUser(res.data.otherUsers))
             } catch (error) {
                 console.log("error in useGetProfile = ", error)

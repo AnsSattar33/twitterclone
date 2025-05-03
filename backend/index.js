@@ -10,21 +10,15 @@ databaseConnection();
 
 dotenv.config({ path: ".env" })
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://twitterclone-frontend-five.vercel.app"
-];
-
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    credentials: true
-};
+    origin: [
+        "http://localhost:5173",
+        "https://twitterclone-frontend-five.vercel.app"
+    ],
+
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}
 //Middleware
 
 app.use(express.urlencoded({ extended: true }))
@@ -34,13 +28,13 @@ app.use(cookieParser())
 app.use(cors(corsOptions));
 //api
 
-app.use("/api/v1/user", userRoute)
-
-app.use("/api/v1/tweet", tweetRoute)
-
 app.get("/", (req, res) => {
     res.send("Twitter Clone Backend is running!");
 });
+
+app.use("/api/v1/user", userRoute)
+
+app.use("/api/v1/tweet", tweetRoute)
 
 
 app.listen(process.env.PORT, () => {
