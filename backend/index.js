@@ -11,11 +11,8 @@ databaseConnection();
 dotenv.config({ path: ".env" })
 
 const corsOptions = {
-    origin: [
-        "http://localhost:5173",
-        "https://twitterclone-frontend-five.vercel.app"
-    ],
-
+    origin: "https://deploy-mern-1whq.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
