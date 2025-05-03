@@ -26,6 +26,7 @@ const Profile = () => {
                 const res = await axios.post(`${API_BASE_URL}/unfollow/${id}`, { id: user._id }, {
                     headers: {
                         "Content-Type": "application/json",
+                        Accept: "application/json"
 
                     },
                     withCredentials: true
