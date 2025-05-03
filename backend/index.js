@@ -28,14 +28,20 @@ app.use(cookieParser())
 app.use(cors(corsOptions));
 //api
 
-app.get("*", (_, res) => {
-    res.send("Twitter Clone Backend is running!");
+app.use("/", (_, res) => {
+    return res.send("API is working")
 });
 
 app.use("/api/v1/user", userRoute)
 
 app.use("/api/v1/tweet", tweetRoute)
 
+app.use('*', (_, res) => {
+    return res.status(404).json({
+        success: false,
+        message: "Not Found"
+    })
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server listning to ${process.env.PORT}`)
