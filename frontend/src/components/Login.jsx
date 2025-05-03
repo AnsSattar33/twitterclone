@@ -13,14 +13,20 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const API_BASE_URL = import.meta.env.PROD
+    ? "https://twitterclone-backend-beta.vercel.app"
+    : USER_API_END_POINT;
+
   const submitHandler = async (e) => {
+
 
     e.preventDefault();
     if (isLogin) {
       //login
       try {
 
-        const res = await axios.post(`${USER_API_END_POINT}/login`, { email, password }, {
+        const res = await axios.post(`${API_BASE_URL}/login`, { email, password }, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -40,7 +46,7 @@ const Login = () => {
       //register
 
       try {
-        const res = await axios.post(`${USER_API_END_POINT}/register`, { name, username, email, password }, {
+        const res = await axios.post(`${API_BASE_URL}/register`, { name, username, email, password }, {
           headers: {
             "Content-Type": "application/json",
           },

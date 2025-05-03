@@ -12,6 +12,8 @@ const useGetProfile = async (id) => {
         ? "https://twitterclone-backend-beta.vercel.app"
         : USER_API_END_POINT;
 
+    console.log("api base url = ", API_BASE_URL)
+
     useEffect(() => {
         const fetchOtherUser = async () => {
             try {

@@ -14,14 +14,16 @@ const Profile = () => {
     const { id } = useParams();
     console.log(id)
     useGetProfile(id)
-    console.log(user)
+
+    const API_BASE_URL = import.meta.env.PROD
+        ? "https://twitterclone-backend-beta.vercel.app"
+        : USER_API_END_POINT;
+
     const followHandler = async () => {
-
-
 
         if (user.following?.includes(id)) {
             try {
-                const res = await axios.post(`${USER_API_END_POINT}/unfollow/${id}`, { id: user._id }, {
+                const res = await axios.post(`${API_BASE_URL}/unfollow/${id}`, { id: user._id }, {
                     headers: {
                         "Content-Type": "application/json",
 
@@ -36,7 +38,7 @@ const Profile = () => {
             }
         } else {
             try {
-                const res = await axios.post(`${USER_API_END_POINT}/follow/${id}`, { id: user._id }, {
+                const res = await axios.post(`${API_BASE_URL}/follow/${id}`, { id: user._id }, {
                     headers: {
                         "Content-Type": "application/json",
 
