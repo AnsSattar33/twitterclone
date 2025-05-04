@@ -11,7 +11,7 @@ databaseConnection();
 dotenv.config({ path: ".env" })
 
 const corsOptions = {
-    origin: 'https://twitterclone-frontend-three.vercel.app/',
+    origin: 'http://localhost:5173', //frontend url
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
@@ -25,9 +25,9 @@ app.use(cookieParser())
 app.use(cors(corsOptions));
 //api
 
-app.use("/", (_, res) => {
-    return res.send("API is working")
-});
+// app.use("/", (_, res) => {
+//     return res.send("API is working")
+// });
 
 app.use("/api/v1/user", userRoute)
 
