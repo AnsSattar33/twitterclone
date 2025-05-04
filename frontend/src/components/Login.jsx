@@ -24,18 +24,10 @@ const Login = () => {
     e.preventDefault();
     if (isLogin) {
       //login
+      console.log("login")
       try {
 
-        const res = await axios.post(`${API_BASE_URL}/login`, { email, password }, {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://twitterclone-frontend-three.vercel.app",
-            "Access-Control-Allow-Credentials": true,
-            "Accept": "application/json"
-
-          },
-          withCredentials: true
-        })
+        const res = await axios.post(`${API_BASE_URL}/login`, { email, password })
         if (res.data.success) {
           dispatch(getUser(res?.data.user))
           navigate("/")
@@ -50,12 +42,7 @@ const Login = () => {
       //register
 
       try {
-        const res = await axios.post(`${API_BASE_URL}/register`, { name, username, email, password }, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true
-        })
+        const res = await axios.post(`${API_BASE_URL}/register`, { name, username, email, password })
         console.log(res)
         if (res.data.success) {
           setIsLogin(true)
