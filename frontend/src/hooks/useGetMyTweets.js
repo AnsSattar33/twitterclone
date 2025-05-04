@@ -8,7 +8,7 @@ const useGetMyTweet = async (id) => {
     const dispatch = useDispatch();
 
     const API_BASE_URL = import.meta.env.PROD
-        ? "https://twitterclone-backend-beta.vercel.app/api/v1/tweet"
+        ? "https://twitterclone-backend-six.vercel.app/api/v1/tweet"
         : TWEET_API_END_POINT;
 
     const fetchMyTweets = async () => {
