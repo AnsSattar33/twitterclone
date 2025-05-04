@@ -23,6 +23,7 @@ app.use(cors({
     origin: ['http://localhost:5173', 'https://twitterclone-frontend-beta.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     withCredentials: true,
+    credentials: true,
 }));
 app.use(express.json())
 app.use(cookieParser())

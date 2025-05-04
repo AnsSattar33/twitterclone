@@ -14,6 +14,7 @@ const useGetProfile = async (id) => {
 
     console.log("api base url = ", API_BASE_URL)
 
+
     useEffect(() => {
         const fetchOtherUser = async () => {
             try {
