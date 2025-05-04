@@ -20,7 +20,7 @@ dotenv.config({ path: ".env" })
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://twitterclone-frontend-beta.vercel.app'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     withCredentials: true,
     credentials: true,
