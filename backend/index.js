@@ -11,21 +11,28 @@ databaseConnection();
 dotenv.config({ path: ".env" })
 
 const frontendUrl = process.env.FRONTEND_URL
-// const corsOptions = {
-//     origin: 'http://localhost:5173', 
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,           
-//     optionSuccessStatus: 200
-// }
-//Middleware
+const allowedOrigins = [
+    'https://twitterclone-frontend-three.vercel.app',
+    'http://localhost:5173',
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Preflight request handler
+app.options('*', cors());
 
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({
-    origin: frontendUrl,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    withCredentials: true,
-    credentials: true,
-}));
 app.use(express.json())
 app.use(cookieParser())
 
