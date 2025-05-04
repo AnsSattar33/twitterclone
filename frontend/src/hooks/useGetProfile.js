@@ -9,7 +9,7 @@ const useGetProfile = async (id) => {
     const { refresh } = useSelector(state => state.tweet)
 
     const API_BASE_URL = import.meta.env.PROD
-        ? "https://twitterclone-backend-beta.vercel.app"
+        ? "https://twitterclone-backend-beta.vercel.app/api/v1/user"
         : USER_API_END_POINT;
 
     console.log("api base url = ", API_BASE_URL)
