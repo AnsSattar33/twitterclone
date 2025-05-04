@@ -12,9 +12,14 @@ import toast from "react-hot-toast";
 
 const Tweet = ({ tweet, user }) => {
   const dispatch = useDispatch();
+
+  const API_BASE_URL = import.meta.env.PROD
+    ? "https://twitterclone-backend-six.vercel.app/api/v1/tweet"
+    : TWEET_API_END_POINT;
+
   const likeHandler = async (id) => {
     try {
-      const res = await axios.put(`${TWEET_API_END_POINT}/like/${id}`, { id: user?._id }, {
+      const res = await axios.put(`${API_BASE_URL}/like/${id}`, { id: user?._id }, {
         withCredentials: true
       })
       dispatch(getRefresh())

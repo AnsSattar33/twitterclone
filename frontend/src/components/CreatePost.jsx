@@ -11,9 +11,12 @@ const CreatePost = () => {
   const { isActive } = useSelector(state => state.tweet)
   const [description, setDescription] = useState("")
   const dispatch = useDispatch();
+  const API_BASE_URL = import.meta.env.PROD
+    ? "https://twitterclone-backend-six.vercel.app/api/v1/tweet"
+    : TWEET_API_END_POINT;
   const submitHandler = async () => {
     try {
-      const res = await axios.post(`${TWEET_API_END_POINT}/create`, { description, id: user?._id }, {
+      const res = await axios.post(`${API_BASE_URL}/create`, { description, id: user?._id }, {
         headers: {
           "Content-Type": "application/json"
         },
