@@ -29,6 +29,10 @@ const Login = () => {
         const res = await axios.post(`${API_BASE_URL}/login`, { email, password }, {
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
+            "Access-Control-Allow-Headers": "*",
           },
           withCredentials: true
         })
