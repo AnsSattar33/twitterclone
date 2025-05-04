@@ -11,7 +11,7 @@ databaseConnection();
 dotenv.config({ path: ".env" })
 
 const corsOptions = {
-    origin: 'http://localhost:5173', //frontend url
+    origin: 'https://twitterclone-frontend-three.vercel.app', //frontend url
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
