@@ -10,6 +10,8 @@ databaseConnection();
 
 dotenv.config({ path: ".env" })
 
+const frontendUrl = process.env.FRONTEND_URL
+const frontendUrlVercel = process.env.FRONTEND_URL_PROD
 // const corsOptions = {
 //     origin: 'http://localhost:5173', 
 //     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -20,7 +22,7 @@ dotenv.config({ path: ".env" })
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-    origin: '*',
+    origin: [frontendUrl, frontendUrlVercel],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     withCredentials: true,
     credentials: true,
